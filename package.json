@@ -10,7 +10,7 @@
     "electron": "^1.7.8",
     "electron-installer-dmg": "^0.1.2",
     "electron-packager": "^8.7.2",
-    "electron-winstaller": "^2.4.1"
+    "electron-winstaller": "^2.6.4"
   },
   "repository": {
     "type": "git",
@@ -23,5 +23,8 @@
     "create-installer-mac": "electron-installer-dmg ./release-builds/Electron\\ tutorial\\ app-darwin-x64/Electron\\ tutorial\\ app.app electron-tutorial-app --out=release-builds --overwrite --icon=assets/icons/mac/icon.icns",
     "create-installer-win": "node installers/windows/createinstaller.js",
     "create-debian-installer": "electron-installer-debian --src release-builds/electron-tutorial-app-linux-x64/ --arch amd64 --config debian.json"
+  },
+  "dependencies": {
+    "mysql": "^2.15.0"
   }
 }

@@ -8,8 +8,11 @@ if (setupEvents.handleSquirrelEvent()) {
 const electron = require('electron')
 // Module to control application life.
 const app = electron.app
-const {ipcMain} = require('electron')
+const {
+  ipcMain
+} = require('electron')
 var path = require('path')
+var hello = require('./assets/js/hello.js')
 
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow
@@ -20,9 +23,10 @@ const BrowserWindow = electron.BrowserWindow
 let mainWindow
 let secondWindow
 
-function createWindow () {
+function createWindow() {
   // Create the browser window.
-  mainWindow = new BrowserWindow({titleBarStyle: 'hidden',
+  mainWindow = new BrowserWindow({
+    titleBarStyle: 'hidden',
     width: 1281,
     height: 800,
     minWidth: 1281,
@@ -45,14 +49,15 @@ function createWindow () {
   })
 
   // Emitted when the window is closed.
-  mainWindow.on('closed', function () {
+  mainWindow.on('closed', function() {
     // Dereference the window object, usually you would store windows
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
     mainWindow = null
   })
 
-  secondWindow = new BrowserWindow({frame: false,
+  secondWindow = new BrowserWindow({
+    frame: false,
     width: 800,
     height: 600,
     minWidth: 800,
@@ -68,12 +73,12 @@ function createWindow () {
   require('./menu/mainmenu')
 }
 
-ipcMain.on('open-second-window', (event, arg)=> {
-    secondWindow.show()
+ipcMain.on('open-second-window', (event, arg) => {
+  secondWindow.show()
 })
 
-ipcMain.on('close-second-window', (event, arg)=> {
-    secondWindow.hide()
+ipcMain.on('close-second-window', (event, arg) => {
+  secondWindow.hide()
 })
 
 // This method will be called when Electron has finished
@@ -81,8 +86,12 @@ ipcMain.on('close-second-window', (event, arg)=> {
 // Some APIs can only be used after this event occurs.
 app.on('ready', createWindow)
 
+app.on('ready', () => {
+  hello.sayHello("lol im an idiot")
+})
+
 // Quit when all windows are closed.
-app.on('window-all-closed', function () {
+app.on('window-all-closed', function() {
   // On OS X it is common for applications and their menu bar
   // to stay active until the user quits explicitly with Cmd + Q
   if (process.platform !== 'darwin') {
@@ -90,7 +99,7 @@ app.on('window-all-closed', function () {
   }
 })
 
-app.on('activate', function () {
+app.on('activate', function() {
   // On OS X it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
   if (mainWindow === null) {
