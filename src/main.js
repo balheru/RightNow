@@ -10,8 +10,10 @@ app.on ('ready', () => {
   mainWindow =new browser({
     //frame:false,
     titleBarStyle: 'hidden',
-    height:400,
-    width:400
+    height:1281,
+    width:800,
+    minWidth:800,
+    minHeight:1281
   })
 
 
