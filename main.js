@@ -1,3 +1,6 @@
+Another Test For Branches
+
+
 //handle setupevents as quickly as possible
 const setupEvents = require('./installers/setupEvents')
 if (setupEvents.handleSquirrelEvent()) {
