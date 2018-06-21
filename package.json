@@ -15,5 +15,8 @@
     "url": "https://github.com/balheru/RightNow/issues"
   },
   "homepage": "https://github.com/balheru/RightNow#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "mysql": "^2.15.0"
+  }
 }
